@@ -1,1 +1,121 @@
+import java.util.ArrayList;
+// trees ki 1 class : 2nd March
 
+public class l001bt{
+    public static class Node{
+        int data = 0;
+        Node left = null;
+        Node right = null;
+
+        Node(int data){
+            this.data = data;
+
+        }
+    }
+    //TRaversals
+    public static void preOrderTraversel(Node root, ArrayList<Integer> ans){
+        if(root == null){
+            return;
+        }
+        ans.add(root.data);
+        preOrderTraversel(root.left,ans);
+        preOrderTraversel(root.right,ans);
+    }
+    public static void InOrderTraversel(Node root, ArrayList<Integer> ans){
+        if(root == null){
+            return;
+        }
+        InOrderTraversel(root.left,ans);
+        ans.add(root.data);
+        InOrderTraversel(root.right,ans);
+    }
+    public static void PostOrderTraversel(Node root, ArrayList<Integer> ans){
+        if(root == null){
+            return;
+        }
+        PostOrderTraversel(root.left,ans);
+        PostOrderTraversel(root.right,ans);
+        ans.add(root.data);
+    }
+    public static void Traversal(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        preOrderTraversel(root, ans);
+        InOrderTraversel(root, ans);
+        PostOrderTraversel(root, ans);
+    }
+    // Basic Functions
+    public static int size(Node root){
+        if(root==null){
+            return 0;
+        }
+        int left =size(root.left);
+        int right =size(root.right);
+        return left + right + 1;
+    }
+    public static int height(Node root){//in terms of edge (arrows)--------->
+        if(root==null){
+            return -1;
+        }
+        int left = height(root.left);
+        int right = height(root.right);
+        return Math.max(left,right) + 1;
+    }
+    
+    public static int heightintermsofNode(Node root){
+        if(root==null){
+            return 0;
+        }
+        int left =  heightintermsofNode(root.left);
+        int right =  heightintermsofNode(root.right);
+        return Math.max(left, right)+1;
+    }
+    public static int max(Node root){
+        if(root==null){
+            return -(int)1e9;   
+        }
+        int leftmax = max(root.left);
+        int rightmax = max(root.right);
+        return Math.max(Math.max(leftmax,rightmax),root.data);
+    }
+    public static int min(Node root){
+        if(root==null){
+            return (int)1e9;   
+        }
+        int leftmin = min(root.left);
+        int rightmin = min(root.right);
+        return Math.min(Math.min(leftmin,rightmin),root.data);
+    }
+    public static int sum(Node root){
+        if(root == null){
+            return 0;
+        } 
+        int  leftsum = sum(root.left);
+        int rightsum = sum(root.right);
+        return rightsum + leftsum + root.data;
+    }
+
+    public static boolean findData1(Node root , int data){//reccursion
+        if(root == null){
+            return false;
+        }
+        //boolean res = root.data == data;
+        return root.data == data || findData1(root.left,data) || findData1(root.right,data);
+    }
+
+    public static boolean findData2(Node root , int data){
+        if(root == null){
+            return false;
+        }
+        if(root.data==data){
+            return true;
+        }
+        boolean left = findData2(root.left,data);
+        if(left)
+            return true;
+        
+        boolean right = findData2(root.right, data);
+        if(right)
+            return true;
+        return false;
+    }
+    }
