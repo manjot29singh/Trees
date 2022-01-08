@@ -118,4 +118,45 @@ public class l001bt{
             return true;
         return false;
     }
+    public static boolean roottoNodepath(Node root , int data , ArrayList<Node> ans){
+        if(root==null){
+            return false; 
+        }
+
+        boolean res = (root.data==data) || roottoNodepath(root.left,data,ans) || roottoNodepath(root.right,data,ans);
+        if (res)
+            ans.add(root);
+        return res;
+    }
+    
+    public static void printatDepthk(Node root,Node block,int k,ArrayList<Integer> ans){//96:37:00 we have to go down k level in tree 
+        if(root==null || root==block || k<0) return;//k should be positive beacuse -k will reach to 1 level more down to the desired one 
+        if(k==0){                             //finding the k==0 means we reached the desired level of tree now we should print the nodes
+            ans.add(root.data);
+            return;
+        }
+        printatDepthk(root.left,block,k-1,ans);//k should be decreasing by 1 on next decreased level
+        
+        printatDepthk(root.right,block,k-1,ans);
+
+    }
+    public static ArrayList<Integer> distancek(Node root,Node target,int k ){
+        ArrayList<Node> path = new ArrayList<>();
+        roottoNodepath(root,target.data,path);
+        
+        Node block=null;
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for(int i=0 ; i < path.size() ; i++){  
+            printatDepthk(path.get(i),block,k-i,ans);
+            block = path.get(i);
+        }
+        return ans;
+    }
+    
+    
+    
+    
+    
     }
