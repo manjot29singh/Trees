@@ -154,6 +154,28 @@ public class l001bt{
         }
         return ans;
     }
+    static ArrayList<Integer> path = new ArrayList<>();
+    public static boolean findData_nodetorootpath(Node node,int data){
+        if(node==null){
+            return false;
+        }
+        if(node.data==data){
+            path.add(node.data);
+            return true;
+        }
+        boolean left = findData_nodetorootpath(node.left,data);
+        if(left){
+            path.add(node.data);
+            return true;
+        }
+        boolean right = findData_nodetorootpath(node.right,data);
+        if(right){
+            path.add(node.data);
+
+            return true;
+        }
+        return false;   
+    }
     
     
     
