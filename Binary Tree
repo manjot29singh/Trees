@@ -195,6 +195,18 @@ public class l001bt{
         printsinglechildnode(node.right,node);
     }
     
+    public static Node removeleavenodes(Node node){// return type.
+        if(node==null){
+            return null;
+        }
+        if(node.left==null && node.right==null){//if we found the leaf node means the node which have no left or right child then to remove it just return a null value to its [parent.]
+            return null;
+        }
+        node.left=removeleavenodes(node.left);
+        node.right=removeleavenodes(node.right);
+        return node;
+    }
+    
     
     
     
