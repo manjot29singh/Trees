@@ -206,6 +206,22 @@ public class l001bt{
         node.right=removeleavenodes(node.right);
         return node;
     }
+    public static void removeleaves(Node node, Node parent){//void type 
+        if(node==null){
+            return;
+        }
+        if(node.left==null && node.right==null){//its a leaf node chek
+            
+            if(parent.left==node){  //means leaf node is connected to the left side of parent 
+                parent.left=null;   //so make parent.left=null;
+            }
+            else{                   //means leaf node is the right child of parent
+                parent.right=null;
+            }
+        }
+        removeleaves(node.left,node);
+        removeleaves(node.right,node);
+    }
     
     
     
