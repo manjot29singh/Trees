@@ -184,6 +184,18 @@ public class l001bt{
             printatDepthk(path.get(i),i==0 ? null : path.get(i - 1),);
         }
     }
+    public static void printsinglechildnode(Node node,Node parent){
+        if(node==null){      //tree is empty
+            return;
+        }
+        if(parent != null &&  (parent.left == null || parent.right==null)){ //parent should not be null bcs if parent== null then there will be no child . && condition to check if that node is only child or not ?? so check either nod.left or node.right == null
+            System.out.println(node.data);//print the node data
+        }
+        printsinglechildnode(node.left,node);
+        printsinglechildnode(node.right,node);
+    }
+    
+    
     
     
     
