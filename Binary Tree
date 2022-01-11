@@ -228,6 +228,22 @@ public class l001bt{
         }
         removeleaves(node,null);
     }
+    public static boolean IsBST(Node node){
+        if(node==null) return true;
+        boolean leftres = IsBST(node.left);
+        if(!leftres) return false; 
+
+        //INOREDER CHECKING
+        if(prev != null  &&  prev.data > node.data ) return false; //main condition previous.data should be less  node.data
+
+        prev=node;//if the above if do not runs then update the prev to point at node.
+
+        boolean rightres = IsBST(node.right);
+        if(!rightres) return false;
+
+        return true;
+    }
+
     
     
     
