@@ -243,6 +243,27 @@ public class l001bt{
 
         return true;
     }
+    public class IsBSTpairsol{// main class we made to return many and many values to function
+        int maxEle = -(int)1e8;
+        int minEle = (int)1e8;
+        boolean IsBST = true;
+
+        int height = -1;
+        boolean isBal = true;
+
+        int largestBSTSize = 0;
+        Node largestBSTNode =null;
+
+        int totalNoOfBST = 0;
+
+        public IsBSTpairsol(int maxEle, int minEle,boolean IsBST){//parametrized CONSTRUCTOR
+            this.IsBST = IsBST;
+            this.maxEle = maxEle;
+            this.minEle = minEle;
+        }
+        public IsBSTpairsol(){//Default CONSTRUCTOR
+        }
+    }
 
     
     
