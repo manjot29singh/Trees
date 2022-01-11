@@ -222,6 +222,12 @@ public class l001bt{
         removeleaves(node.left,node);
         removeleaves(node.right,node);
     }
+    public static Node removeleaves1(Node node){//if there is only single node its the leaf and it is the parent too
+        if(node.left==null && node.right==null){
+            return null;
+        }
+        removeleaves(node,null);
+    }
     
     
     
