@@ -263,6 +263,27 @@ public class l001bt{
         }
         public IsBSTpairsol(){//Default CONSTRUCTOR
         }
+        public IsBSTpairsol isbst(Node node){//Return type sol.
+        if(node==null){
+            IsBSTpairsol base = new IsBSTpairsol();//when we reach null that is bst and its true so we return a new base type of IsBSTpairsol.
+            
+            return base;
+        }
+
+        IsBSTpairsol left = isbst(node.left);//left call
+        IsBSTpairsol right = isbst(node.right);//right call.
+
+        IsBSTpairsol myres = new IsBSTpairsol(); //making new myres to return.
+        
+        myres.IsBST=false; //default set it to false
+
+        if(left.IsBST && right.IsBST && left.maxEle < node.data && node.data < right.minEle){//condn for BST
+            myres.IsBST = true;
+            myres.minEle = Math.min(left.minEle,node.data);//we have to compare between node->data or left->minEle beacuse while returning it will return the -1e9 or +1e9 in place of minEle and maxEle respectively/
+            myres.maxEle = Math.max(right.maxEle,node.data);//Because right ele in BSt is alwys the max.
+        }
+        return myres;
+    }
     }
 
     
