@@ -284,6 +284,52 @@ public class l001bt{
         }
         return myres;
     }
+    
+    public static class isBalpair{
+        int height= -1;
+        boolean balancetree = true;
+
+        int totalnoofbst =0;
+    }
+    public static isBalpair isbalance(Node node){
+        if(node==null)
+            return new isBalpair();
+        
+        isBalpair left = isbalance(node.left);
+        if(!left.balancetree) return left;
+        
+
+        isBalpair right = isbalance(node.right);
+        if(!right.balancetree) return right;
+    
+        isBalpair ans = new isBalpair();
+        ans.balancetree = false;
+
+        if(left.balancetree && right.balancetree && Math.abs(left.height  - right.height ) <= 1){
+            ans.height = Math.max(left.height, right.height) + 1;
+            ans.balancetree = true;
+        }
+        return ans;
+    }
+    public static boolean isbal(Node node){
+        isBalpair ans = isbalance(node);
+        return ans.balancetree;
+    }
+
+    public static int totalbst(Node node){
+        
+        if(node==null) return 0;
+
+        isBalpair ans = new isBalpair();
+
+        int left = totalbst(node.left);
+
+        if(node.left.data < node.data && node.data < node.right.data && ans.IsBST ){
+       
+        }
+        int right = totalbst(node.right);   
+    }
+
     }
 
     
