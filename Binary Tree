@@ -394,6 +394,28 @@ public class l001bt{
       return ts;
       
     }
+    public static Node LCA (Node node, int p,int q){//O(3n)
+        ArrayList<Node> list1 = new ArrayList<>();//two arraylists for storing the 2 resuts of ROOTTONODE path.
+        ArrayList<Node> list2 = new ArrayList<>();
+
+        roottoNodepath(node, p, list1);//O(n)
+        roottoNodepath(node, q, list2);//O(n)
+
+        int i = list1.size()-1;//start from back of arrayalist
+        int j = list2.size()-1;
+
+        Node lca=null;
+        while(i>=0 && j>=0){ //O(n) height differs
+            if(list1.get(i) != list2.get(j)){//if list1 at index[i] is not equal to list2 at index[j]
+                break;//break the loop
+            }
+
+           lca = list1.get(i);//otherwise lca will be list1[i];
+            i--;//decrease the pointer to -1;
+            j--;
+        }
+        return lca;
+    } 
 
     }
 
