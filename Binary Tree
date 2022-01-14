@@ -329,6 +329,37 @@ public class l001bt{
         }
         int right = totalbst(node.right);   
     }
+    public static  IsBSTpairsol allsolutions(Node node){
+        IsBSTpairsol left = allsolutions(node.left);
+        IsBSTpairsol right  = allsolutions(node.right);
+
+        IsBSTpairsol ans = new IsBSTpairsol();
+
+        ans.IsBST=left.IsBST && right.IsBST && left.maxEle < node.data && node.data < right.minEle;//isbst
+        ans.isBal=left.isBal && right.isBal && Math.abs(left.height - right.height) <= 1 ;//isbalanced
+        
+        ans.maxEle = Math.max(node.data,right.maxEle);//setting maxEle
+        ans.minEle = Math.min(node.data,left.minEle);//setting minEle
+        ans.height = Math.max(left.height,right.height) + 1 ;//setting height
+
+        ans.totalNoOfBST = left.totalNoOfBST + right.totalNoOfBST + (ans.IsBST ? 1 : 0);//Adding totaolno of bst's
+
+        if(ans.IsBST){//if ans is also a bst so it is the largest BST node and its also the Largest BST size
+            ans.largestBSTNode = node;
+            ans.largestBSTSize += left.largestBSTSize + right.largestBSTSize + 1;
+        }
+        else{//if ans is not a bst 
+            if(left.largestBSTSize < right.largestBSTSize){//if right bstsize is bigger
+                ans.largestBSTSize = right.largestBSTSize;//right bst size is the largest in the tree
+                ans.largestBSTNode = right.largestBSTNode;//right bst node is the node whoch leads the largest bst tree
+            }
+            else{//if left bst size is > right bst size
+                ans.largestBSTSize = left.largestBSTSize;//setting left largest size and left largest node to left.
+                ans.largestBSTNode = left.largestBSTNode; 
+            }
+        }
+        return ans;
+    }
 
     }
 
