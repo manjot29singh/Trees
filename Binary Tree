@@ -360,6 +360,25 @@ public class l001bt{
         }
         return ans;
     }
+     //TILT of a tree =  | lefttree.sum - righttree.sum |
+    public static class tiltoftree{
+        int sum=0;
+        int overalltilt=0;
+    }
+    public static tiltoftree tilt(Node node){
+        if(node==null){
+            return new tiltoftree();
+
+        }
+        tiltoftree left = tilt(node.left);
+        tiltoftree right = tilt(node.right);
+
+        tiltoftree ans = new tiltoftree();
+
+        ans.sum = left.sum+right.sum+node.data;
+        ans.overalltilt = left.overalltilt + right.overalltilt + Math.abs(left.sum - right.sum);
+        return ans;
+    }
 
     }
 
