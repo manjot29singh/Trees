@@ -379,6 +379,21 @@ public class l001bt{
         ans.overalltilt = left.overalltilt + right.overalltilt + Math.abs(left.sum - right.sum);
         return ans;
     }
+    static int tilt = 0;
+    public static int tilt1(Node node){
+      // write your code here to set the tilt data member
+      if(node==null) return 0;
+      int ls = tilt1(node.left);
+      int rs = tilt1(node.right);
+      
+      
+      
+      int ltilt = Math.abs(ls-rs);
+      tilt += ltilt;
+      int ts = ls+rs+node.data;
+      return ts;
+      
+    }
 
     }
 
