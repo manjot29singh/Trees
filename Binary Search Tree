@@ -23,6 +23,12 @@ public class bst {
         node.right = constructTree(arr,mid+1,ei);
         return node;
     }
+    public static Node constructTree(int[] arr){
+        return constructTree(arr,0,arr.length-1);
+    }
+    public static int size(Node node){
+        return (node==null ) ? 0 : size(node.left)+size(node.right)+1;       
+    }
     
     
 }
