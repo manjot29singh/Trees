@@ -1,1 +1,32 @@
+import java.util.ArrayList;
+//9 MARCH BST
+public class bst {
+
+    public static class Node{
+
+        int data=0;
+        Node left = null;
+        Node right = null;
+        
+        Node(int data){
+            this.data = data;
+        }
+    }
+    public static Node constructTree(int[] arr,int si,int ei){
+        if(si > ei){
+            return null;
+        }
+        int mid = (si + ei) / 2;
+        Node node = new Node(arr[mid]) ;
+
+        node.left = constructTree(arr,si,mid-1);
+        node.right = constructTree(arr,mid+1,ei);
+        return node;
+    }
+    
+    
+}
+    
+    
+    
 
