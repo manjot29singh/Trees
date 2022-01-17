@@ -49,6 +49,13 @@ public class bst {
             return node.data;
         return maximumRec(node.right);
     }
+    public static int min(Node node){
+        Node curr = node;
+        while(curr.left != null){
+            curr=curr.left;
+        }
+        return curr.data;
+    }
     
     
 }
