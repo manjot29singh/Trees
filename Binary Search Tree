@@ -37,6 +37,13 @@ public class bst {
         int right = height(node.right);
         return Math.max(left,right)+1;
     }
+    public static int max(Node node){
+        Node curr = node;
+        while(curr.right != null){
+            curr=curr.right;
+        }
+        return curr.data;   
+    }
     
     
 }
