@@ -44,6 +44,11 @@ public class bst {
         }
         return curr.data;   
     }
+    public static int maximumRec(Node node) {//Recursive
+        if (node.right == null)
+            return node.data;
+        return maximumRec(node.right);
+    }
     
     
 }
