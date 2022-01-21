@@ -56,6 +56,20 @@ public class bst {
         }
         return curr.data;
     }
+    public static boolean find(Node node,int data){
+        Node curr = node;
+        while(curr!=null){
+            if(curr.data==data){
+                return true;
+            }else if(curr.data < data){
+                curr=curr.right; 
+            }
+            else{
+                curr=curr.left;
+            }
+        }
+        return false;
+    }
     
     
 }
