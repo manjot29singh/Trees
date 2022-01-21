@@ -70,6 +70,19 @@ public class bst {
         }
         return false;
     }
+     public static Node addNode(Node node,int data){//Recursive    O(n)
+        if(node==null){      //when we reach the position then there attach the new node with data;
+            return new Node(data);
+        }
+        if(data > node.data){
+            node.right = addNode(node.right,data);
+        }
+        else if(data < node.data){
+            node.left = addNode(node.left,data);    
+        }
+        return node;
+
+    } 
     
     
 }
