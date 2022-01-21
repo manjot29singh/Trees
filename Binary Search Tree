@@ -83,6 +83,36 @@ public class bst {
         return node;
 
     } 
+     public static Node addData_Iterative(Node node, int data)
+    {
+         if(node == null)
+            return new Node(data);//if the tree is null or we reach the position where we have to attach the node.
+    
+            Node curr = node;
+            Node dNode = new Node(data);//node we want to aatch.
+            while(true)
+            {
+                if (curr.data == data)//dont add node if curr.data==data
+                    break; 
+                else if(curr.data < data){//curr.data is smaller move to right.
+                    if(curr.right != null)//check if right exists if right is not null it means it exists
+                        curr = curr.right;//shift curr = curr.right;
+                    else{                 //if curr.right is null
+                        curr.right = dNode;//attach the datanode to curr.right
+                        break;
+                    }
+                }else                      //curr.data > data
+                {
+                    if(curr.left != null)
+                        curr = curr.left;
+                    else{
+                        curr.left = dNode;
+                        break;
+                        }
+                }
+            }
+            return node;
+    }
     
     
 }
