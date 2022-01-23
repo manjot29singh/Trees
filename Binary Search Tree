@@ -129,6 +129,19 @@ public class bst {
         }
         return null;
     }
+     public static int lcarec(Node node, int d1, int d2) {//Recursive
+        // write your code here
+        Node curr=node;
+        if(curr.data < d1 && curr.data < d2){
+           return lcarec(node.right,d1,d2);
+        }
+        else if(curr.data > d1 && curr.data > d2){
+            return lcarec(node.left,d1,d2);
+        }
+        else{
+            return find(curr,d1)&&find(curr,d2) ? curr.data : 0;
+        }
+    }
     
     
 }
