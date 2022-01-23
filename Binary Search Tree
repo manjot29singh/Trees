@@ -113,6 +113,22 @@ public class bst {
             }
             return node;
     }
+     public static Node lca(Node node ,int p,int q){   //O(n) 03:34:26
+        Node curr = node;
+        while(curr != null){    // still curr is not null
+            if(curr.data < p && curr.data < q){ //if curr.data is lesser than p and q
+                curr=curr.right; //move to curr.right
+            }
+            else if(curr.data > p && curr.data > q){  //if curr.data is bigger then p and q
+                curr=curr.left;  //move to curr.left
+            }
+            else{ //when u cant decide where u have to go that means that is the lca
+                //now we have to chevk that if both the data is present or not in the tree 
+                return find(curr,p) && find(curr,q) ? curr : null;//IMPORTANT  // if both the data is presnt in the tree then the lca is curr otherwise the lca will be null.
+            }
+        }
+        return null;
+    }
     
     
 }
