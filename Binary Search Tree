@@ -142,6 +142,27 @@ public class bst {
             return find(curr,d1)&&find(curr,d2) ? curr.data : 0;
         }
     }
+    public static Node removenode(Node node,int data){
+        if(node==null){ // if tree is null
+            return null;
+        }
+        if(node.data < data){          //if node.data os less then desired data 
+            node.right=removenode(node.right,data); //move to right
+        }
+        else if (node.data > data){    //if node.data is greater than desired data
+            node.left=removenode(node.left,data);//move to left
+        }
+        else{                          //if node.data = desired data.
+            if(node.left==null || node.right==null){ //check if node.left == null or node.right == null
+                return node.left != null ? node.left : node.right;//we have to return the not null node to attach it to the main node
+            }//if left is not null return left otherwise return node.right.
+
+            int mindata = min(node.right);//calculating min data from right subtree.
+            node.data = mindata;          // assigning the mindata = node.data.
+            node.right = removenode(node.right, mindata);//again call the removenode at that place (from whwere we have replaced the data )
+        }
+        return node;
+    }
     
     
 }
