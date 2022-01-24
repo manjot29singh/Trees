@@ -192,6 +192,24 @@ public class bst {
             }
         }
     }
+    public static void pir(Node node, int d1, int d2) {
+       
+        if(node==null){
+            return;
+        }
+        if(d1 < node.data && d2 < node.data ){//if i am greater than both d1 and d2 so never go to right becs there r more greater number call to left
+            pir(node.left,d1,d2);
+        }
+        else if(d1 > node.data && d2 >node.data){//if i m smaller then dont go to node.left bcs there more small numbers will be present call to node.right
+            pir(node.right,d1,d2);
+        }
+        else{                                 //if i am in range then i will go to left as well as right 
+            pir(node.left,d1,d2);
+            System.out.println(node.data);// and print in inorder as well to get the increasing order of the ans.
+            pir(node.right,d1,d2);
+        }
+        
+      }
     
     
 }
