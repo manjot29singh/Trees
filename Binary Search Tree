@@ -163,6 +163,15 @@ public class bst {
         }
         return node;
     }
+    public static void inorder(Node node,ArrayList<Integer> list){//O(n)
+        //we will have the inorder of the tree and gonna put 2 pointer one from first second at last of list ans then we will traverse the list to make our target
+        if(node==null){
+            return;
+        }
+        inorder(node.left, list);//inorder of the tree which is stored in the arraylsit named list.
+        list.add(node.data);
+        inorder(node.right, list);
+    }
     
     
 }
