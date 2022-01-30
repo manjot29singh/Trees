@@ -46,5 +46,15 @@ public class l003gt{
         }
         return res;
     }
+    public static boolean roottonodepath(Node node,int data ,ArrayList<Node> list){
+        boolean res = node.data == data;
+        for(Node child : node.childs){
+            res = res || roottonodepath(child,data,list);//if first condition fails then second will be checked.
+        }
+        if(res){
+            list.add(node);
+        }
+        return res;
+    }
     
 }
