@@ -1,1 +1,22 @@
+import java.util.ArrayList;
 
+public class l003gt{
+    //GENERIC TREE
+    public static class Node{
+        int data=0;
+        ArrayList<Node> childs = new ArrayList<>();
+
+        Node(int data){
+            this.data=data;
+        }
+
+    }
+    public static int size(Node node){
+    int sizee=0;
+    for(Node child : node.childs){//for every child node in childs arraylist
+        sizee= sizee + size(child); //size is equal to size + size(child);
+    }
+    return sizee + 1 ; //+1 for the node's size.
+    }
+    
+}
