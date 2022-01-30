@@ -18,5 +18,12 @@ public class l003gt{
     }
     return sizee + 1 ; //+1 for the node's size.
     }
+    public static int height(Node node){
+        int h = -1;
+        for(Node child : node.childs){
+            h = Math.max(h,height(child));
+        }
+        return h+1;
+    }
     
 }
