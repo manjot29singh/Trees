@@ -32,5 +32,19 @@ public class l003gt{
         }
         return Math.max(max,node.data);
     }
+     public static int minimum(Node node){
+        int min = node.data;
+        for(Node child : node.childs){
+            min= Math.min(min,minimum(child));
+        }
+        return min;
+    }
+    public static boolean find(Node node,int data){//198:10
+        boolean res = node.data== data;
+        for(Node child : node.childs){
+            res = res || find(child,data);
+        }
+        return res;
+    }
     
 }
