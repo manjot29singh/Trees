@@ -25,5 +25,12 @@ public class l003gt{
         }
         return h+1;
     }
+    public static int maximum(Node node){
+        int max= -(int)1e9;
+        for(Node child : node.childs){
+            max= Math.max(max,maximum(child));
+        }
+        return Math.max(max,node.data);
+    }
     
 }
