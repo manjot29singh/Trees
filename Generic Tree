@@ -1,15 +1,12 @@
 import java.util.ArrayList;
-
 public class l003gt{
     //GENERIC TREE
     public static class Node{
         int data=0;
         ArrayList<Node> childs = new ArrayList<>();
-
         Node(int data){
             this.data=data;
         }
-
     }
     public static int size(Node node){
     int sizee=0;
@@ -56,5 +53,27 @@ public class l003gt{
         }
         return res;
     }
+    
+     public static ArrayList<Integer> nodeToRootPath(Node node, int data) {//faith = ki sare child apne s lekr data tk ka path ek arraylist m daalkr return krdenge
+        if (node.data == data) { //agr pehla hi child hi desired data ho
+          ArrayList<Integer> path = new ArrayList<>();//make a new arraylist
+          path.add(node.data);//add ur self and node.data
+          return path;//return it
+        }
+    
+        for (Node child : node.childs) {//otherwise wehn the first child is not the desired data go with a loop on evry child
+          ArrayList<Integer> ptc = nodeToRootPath(child, data); //ptc= Pathtillchild call the recurssion till the first child of the root node and then if arraylist is not empty so add the node.data to it and return it.
+          if (ptc.size() > 0) { //if ptc size is bigger then zero means it has only the path from root to node otherwise the other childs are are unable to return a filled arraylist .They returned a empty one.
+            ptc.add(node.data);//if any child gives the filled arraylist it means that arraylist contains the nodetorootpath so just add the root.data into it and return it.
+            return ptc;
+          }
+        }
+    
+        return new ArrayList<>();//if data is not prsent return an empty arraylist.
+      }
+    
+    
+    
+    
     
 }
