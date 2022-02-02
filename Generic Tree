@@ -71,6 +71,28 @@ public class l003gt{
     
         return new ArrayList<>();//if data is not prsent return an empty arraylist.
       }
+      public static Node lca1(Node node,int p,int q){
+        ArrayList<Node> list1 = new ArrayList<>();
+        ArrayList<Node> list2 = new ArrayList<>();
+
+        roottonodepath(node,p,list1);
+        roottonodepath(node,q,list2);
+
+        int i=0, j=list1.size() - 1;//one start from start second from end
+        
+        Node lca=null;
+        int lcadistance=0;
+        while(i>=0 && j>=0 ){ // while they cross each other
+            if(list1.get(i) != list2.get(j)){//if list1 at index(i) != list2 at index(j)
+                break;
+            }
+            lcadistance++;
+            lca=list1.get(i);
+            i--;//both should be decreased by one.
+            j--;
+        }
+        return lca;
+    }
     
     
     
