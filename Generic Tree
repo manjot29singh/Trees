@@ -108,6 +108,29 @@ public class l003gt{
       return p1.get(i);//return any arraylist index that will be the lca
         
     }
+     public static int nodetonodepath(Node node,int p,int q){
+        ArrayList<Node> list1 = new ArrayList<>();
+        ArrayList<Node> list2 = new ArrayList<>();
+
+        roottonodepath(node,p,list1);
+        roottonodepath(node,q,list2);
+
+        int i=0, j=list1.size() - 1;
+        
+       
+        int lcadistance=0;
+        while(i>=0 && j>=0 ){
+            if(list1.get(i) != list2.get(j)){
+                break;
+            }
+            lcadistance++;
+            
+            i--;
+            j--;
+        }
+        int dis = (list1.size() + list2.size() - 2*(lcadistance) + 1 );
+        return dis;
+    }
     
     
     
