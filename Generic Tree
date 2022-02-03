@@ -131,6 +131,8 @@ public class l003gt{
         int dis = (list1.size() + list2.size() - 2*(lcadistance) + 1 );
         return dis;
     }
+    }
+    
     
     
     
