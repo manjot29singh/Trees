@@ -147,6 +147,13 @@ public class l003gt{
         j++;
         return i+j;
       }
+      public static Node gettail(Node node){ 
+        Node curr = node;
+        while(curr.childs.size() != 0){//still when the childs arraylist size != 0
+            curr = curr.childs.get(0);//always get the first element of the arraylist as we have to reach the end of the left subtree. we acees the 0 ind bcs arraylist conatins the address of the childs and at 0 idx in arraylist the firsst child addresss is placed.
+        }
+        return curr;    
+    }
     
     
     
