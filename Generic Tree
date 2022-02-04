@@ -196,6 +196,17 @@ public class l003gt{
 
         }
     }
+     public static int kthlargest_(Node node, int bound){
+        int maxlessthanbound =-(int)1e9;
+        for(Node child :node.childs){
+            int recans = kthlargest_(child,bound);
+            maxlessthanbound = Math.max(maxlessthanbound, recans);
+        }
+        if(node.data < maxlessthanbound){
+            maxlessthanbound = Math.max(maxlessthanbound,node.data);
+        }
+        return maxlessthanbound;
+    }
     
     
     
