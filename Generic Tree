@@ -164,6 +164,22 @@ public class l003gt{
             node.childs.remove(i + 1);//now remove node.childs(i + 1);
         }
     }
+     public static Node linearize_btr(Node node){//faith first child u go and linearise urself and give the tail of ur subtree.
+        if(node.childs.size() == 0){
+            return node;
+        }
+        int n = node.childs.size();
+
+        Node gtail = linearize_btr(node.childs.get(n - 1));//starting from last child of the node size -1 i.e last imdex of the arraylist of node
+
+        for(int i = n - 2 ; i >= 0 ; i-- ){//for every second last child i.e size - 2 
+            Node tail = linearize_btr(node.childs.get(i));//get the tail of the second last child 
+            tail.childs.add(node.childs.get(i + 1 ));// tail k arraylist m means node ka n- 2 child (last 2) pr node ka n - 1 child(last 1) add krdo. 
+            node.childs.remove(i + 1 );//remove the i + 1 child from node. means (n-1)
+        }
+        return gtail;
+
+    }
     
     
     
