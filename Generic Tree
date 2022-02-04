@@ -207,6 +207,12 @@ public class l003gt{
         }
         return maxlessthanbound;
     }
+    public static int kthlargest(Node node,int k){
+        int bound = (int)1e9;
+        while(k-- > 0){
+            bound = kthlargest_(node, bound);
+        }
+    }
     
     
     
