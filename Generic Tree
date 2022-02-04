@@ -154,6 +154,16 @@ public class l003gt{
         }
         return curr;    
     }
+    public static void linearise(Node node){//it will perform worst to worst in binary tree when tree has right child is a leaf node and it will perform well in when the main node has all the childs ,
+        for(Node child : node.childs){
+            linearise(child);
+        }
+        for(int i = node.childs.size() - 2 ; i >= 0 ; i--  ){//start from end of list -2 beacause we need the first child and secon 
+            Node tail = gettail(node.childs.get(i));//get the tail of tree we never ever need the tail of the last child of the node bce we have have to joint its head with other child feet
+            tail.childs.add(node.childs.get(i + 1));//add node.childs(i + 1 ) to tail .childs
+            node.childs.remove(i + 1);//now remove node.childs(i + 1);
+        }
+    }
     
     
     
