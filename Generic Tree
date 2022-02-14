@@ -240,6 +240,10 @@ public class l003gt{
         }
         return true;
     }
+    public static boolean IsSymmetric(Node node) {
+        return areSimilar_(node, node);
+    }
+
     
     
     
